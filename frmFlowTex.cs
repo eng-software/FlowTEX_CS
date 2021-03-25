@@ -19,7 +19,7 @@ namespace FlowTEX
 
         const string defaultFlowFormat = "0.000";
         const string defaultTemperatureFormat = "0.000";
-        const string defaultFlowUnit = "ccm";
+        const string defaultFlowUnit = "Sccm";
         const string defaultTemperatureUnit = "°C";
 
         public frmFlowTex()
