@@ -36,6 +36,8 @@ namespace FlowTEX
         const string defaultFlowUnit = "Sccm";
         const string defaultTemperatureUnit = "°C";
 
+        bool wasConnected = false;
+
         public frmFlowTex()
         {
             InitializeComponent();
@@ -46,6 +48,10 @@ namespace FlowTEX
             comboSerialFlowTex.DropDown += ComboSerialFlowTex_DropDown;
             comboSerialFlowTex.Items.Add("AUTO");
             comboSerialFlowTex.SelectedIndex = 0;
+
+            lblSerialNumber.Text = "";
+            lblVersion.Text = "";
+            lblModel.Text = "";
         }
 
         private void ComboSerialFlowTex_DropDown(object sender, EventArgs e)
@@ -84,9 +90,35 @@ namespace FlowTEX
         {
             if(FlowTEX.isConnected())
             {
+                if(!wasConnected)
+                {
+                    wasConnected = true;
+
+                    if(FlowTEX.getModel(out string model))
+                    {
+                        lblModel.Text = model;
+                    }
+
+                    if(FlowTEX.getSerialNumber(out string serialNumber))
+                    {
+                        lblSerialNumber.Text = serialNumber;
+                    }
+
+                    if(FlowTEX.getVersion(out string version))
+                    {
+                        lblVersion.Text = version;
+                    }
+
+
+                }
+
                 lblFlow.Text = FlowTEX.getFlow().ToString(defaultFlowFormat) + defaultFlowUnit;
                 lblTemperature.Text = FlowTEX.getTemperature().ToString(defaultTemperatureFormat) + defaultTemperatureUnit;
             }
+            else
+            {
+                wasConnected = false;
+            } 
 
             if(FlowTEX.hasError())
                 icoFlowTEX.Image = imgStatus.Images[1];

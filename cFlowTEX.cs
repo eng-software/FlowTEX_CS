@@ -291,6 +291,7 @@ namespace TEX
                         if( TheSerialPort.IsOpen )
                         {                            
                             SerialMode = eSerialMode.eTEXNET;
+                            bError = false;
                         }
                         break;
                     }
@@ -304,7 +305,7 @@ namespace TEX
                             bError = true;
                         }
                         else
-                        {
+                        {                            
                             poll();
                         }
                         break;

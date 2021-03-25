@@ -40,6 +40,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.lblSerialNumber = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.icoFlowTEX)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,10 +143,79 @@
             this.label3.TabIndex = 43;
             this.label3.Text = "Temperatura:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 16);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Modelo:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 16);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Número de série:";
+            // 
+            // lblModel
+            // 
+            this.lblModel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblModel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModel.Location = new System.Drawing.Point(34, 178);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(232, 32);
+            this.lblModel.TabIndex = 46;
+            this.lblModel.Text = "lblModel";
+            this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSerialNumber
+            // 
+            this.lblSerialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblSerialNumber.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSerialNumber.Location = new System.Drawing.Point(30, 236);
+            this.lblSerialNumber.Name = "lblSerialNumber";
+            this.lblSerialNumber.Size = new System.Drawing.Size(232, 32);
+            this.lblSerialNumber.TabIndex = 47;
+            this.lblSerialNumber.Text = "lblSerialNumber";
+            this.lblSerialNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblVersion.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(30, 289);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(232, 32);
+            this.lblVersion.TabIndex = 49;
+            this.lblVersion.Text = "lblVersion";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 273);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 16);
+            this.label7.TabIndex = 48;
+            this.label7.Text = "Versão:";
+            // 
             // frmFlowTex
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(280, 167);
+            this.ClientSize = new System.Drawing.Size(280, 339);
+            this.Controls.Add(this.lblVersion);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblSerialNumber);
+            this.Controls.Add(this.lblModel);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -174,6 +249,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblModel;
+        private System.Windows.Forms.Label lblSerialNumber;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label label7;
     }
 }
 
