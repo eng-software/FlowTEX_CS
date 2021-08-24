@@ -72,7 +72,22 @@ namespace TEX
         eRequestMState RequestMState;
         eRequestStatus RequestStatus;
         eSerialMode SerialMode;
-        
+
+        static private class cMTDOpcodes
+        {
+            public static readonly byte OPC_READ_FLOW = (byte)'F';		// Command 'F' - Host gets flow/temp. calc values
+            public static readonly byte OPC_GET_MODEL = (byte)'m';		// Command 'm' - Host gets device Model
+            public static readonly byte OPC_GET_SERIAL_NUMBER = (byte)'n';		// Command 'n' - Host gets device Serial Number
+            public static readonly byte OPC_SAVE = (byte)'S';		// Command 'S' - Host sets device firmware Version number
+            public static readonly byte OPC_GET_VERSION = (byte)'v';		// Command 'v' - Host gets device firmware Version number
+            public static readonly byte OPC_STATUS = (byte)'h';        // Command 'h' - System status
+            public static readonly byte OPC_LOCK = (byte)'L';        // Command 'L' - Lock device to no accept parameters change
+            public static readonly byte OPC_UNLOCK = (byte)'l';        // Command 'l' - Unlock device for changes
+            public static readonly byte OPC_SET_I2C_ADDRESS = (byte)'A';        // Command 'A' - Set I2C Address
+            public static readonly byte OPC_GET_I2C_ADDRESS = (byte)'a';        // Command 'a' - Get I2C Address
+
+        }
+
         public cFlowTEX()
         {
             TheSerialPort = new SerialPort();
@@ -373,7 +388,7 @@ namespace TEX
                     default:
                     case eRequestMState.eFLOW:
                     {
-                        TexNET.sendRequest((byte)'F', null );
+                        TexNET.sendRequest(cMTDOpcodes.OPC_READ_FLOW , null );
                         RequestMState = eRequestMState.eFLOW_ANSWER;
                         break;
                     }
@@ -384,7 +399,7 @@ namespace TEX
                         {
                             if(TexNET.getAnswer(out byte opcode, out byte[] msg, out int length))
                             {
-                                if((opcode == (byte)'F')&&(length>=8))
+                                if((opcode == cMTDOpcodes.OPC_READ_FLOW) &&(length>=8))
                                 {
                                     flow = BitConverter.ToSingle(msg, 0);
                                     temperature = BitConverter.ToSingle(msg,4);
@@ -410,13 +425,6 @@ namespace TEX
                                 RequestMState = eRequestMState.eFLOW;
                             }
                         }
-                        break;
-                    }
-
-                    case eRequestMState.eRAW:
-                    {
-                        TexNET.sendRequest((byte)'R', null );
-                        RequestMState = eRequestMState.eRAW_ANSWER;
                         break;
                     }
 
@@ -483,7 +491,7 @@ namespace TEX
                 NewRequest = new cTexNET.cMessage();
                 NewRequest.Msg = new byte[1];
 
-                NewRequest.Opcode = (byte)'m';
+                NewRequest.Opcode = cMTDOpcodes.OPC_GET_MODEL;
                 NewRequest.Length = (byte)NewRequest.Msg.Length;
                 RequestStatus = eRequestStatus.eNEW_REQUEST;
 
@@ -518,7 +526,7 @@ namespace TEX
                 NewRequest = new cTexNET.cMessage();
                 NewRequest.Msg = new byte[1];
 
-                NewRequest.Opcode = (byte)'n';
+                NewRequest.Opcode = cMTDOpcodes.OPC_GET_SERIAL_NUMBER;
                 NewRequest.Length = (byte)NewRequest.Msg.Length;
                 RequestStatus = eRequestStatus.eNEW_REQUEST;
 
@@ -553,7 +561,7 @@ namespace TEX
                 NewRequest = new cTexNET.cMessage();
                 NewRequest.Msg = new byte[1];
 
-                NewRequest.Opcode = (byte)'v';
+                NewRequest.Opcode = cMTDOpcodes.OPC_GET_VERSION;
                 NewRequest.Length = (byte)NewRequest.Msg.Length;
                 RequestStatus = eRequestStatus.eNEW_REQUEST;
 
@@ -588,7 +596,7 @@ namespace TEX
                 NewRequest = new cTexNET.cMessage();
                 NewRequest.Msg = new byte[1];
 
-                NewRequest.Opcode = (byte)'h';
+                NewRequest.Opcode = cMTDOpcodes.OPC_STATUS;
                 NewRequest.Length = (byte)NewRequest.Msg.Length;
                 RequestStatus = eRequestStatus.eNEW_REQUEST;
 
@@ -624,6 +632,156 @@ namespace TEX
         public double getTemperature()
         {
             return temperature;
+        }
+
+        public bool setI2CAddress(byte Address)
+        {
+            if(bActive)
+            {
+                setLocked(false);
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+                NewRequest = new cTexNET.cMessage();
+                NewRequest.Msg = new byte[1];
+                NewRequest.Msg[0] = (byte)Address;
+                NewRequest.Opcode = cMTDOpcodes.OPC_SET_I2C_ADDRESS;
+                NewRequest.Length = (byte)NewRequest.Msg.Length;
+                RequestStatus = eRequestStatus.eNEW_REQUEST;
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+                setLocked(true);
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+
+                if(RequestStatus == eRequestStatus.eSUCCESS)
+                { return true; }
+
+            }
+
+            return false;
+        }
+
+        public bool getI2CAddress(out byte Address)
+        {
+            if(bActive)
+            {
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                {
+                    Thread.Sleep(10);
+                }
+                NewRequest = new cTexNET.cMessage();
+                NewRequest.Msg = new byte[1];
+
+                NewRequest.Opcode = cMTDOpcodes.OPC_GET_I2C_ADDRESS;
+                NewRequest.Length = (byte)NewRequest.Msg.Length;
+                RequestStatus = eRequestStatus.eNEW_REQUEST;
+
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                {
+                    Thread.Sleep(10);
+                }
+
+                if(RequestStatus != eRequestStatus.eSUCCESS)
+                {
+                    Address = 0;
+                    return false;
+                }
+
+                Address = (byte)NewRequest.Msg[0];
+                return true;
+            }
+
+            Address = 0;
+            return false;
+        }
+
+
+        public bool setLocked(bool Locked)
+        {
+            if(bActive)
+            {
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                {
+                    Thread.Sleep(10);
+                }
+
+                NewRequest = new cTexNET.cMessage();
+
+
+                byte[] lockMsg;
+                int len;
+
+                if(Locked)
+                {
+                    lockMsg = Encoding.Default.GetBytes("FlowTEXLOCK");
+                    len = 11;
+                }
+                else
+                {
+                    lockMsg = Encoding.Default.GetBytes("FlowTEXUNLOCK");
+                    len = 13;
+                }
+
+                NewRequest.Msg = new byte[len];
+                Buffer.BlockCopy(lockMsg, 0, NewRequest.Msg, 0, len);
+
+                if(Locked)
+                {
+                    NewRequest.Opcode = cMTDOpcodes.OPC_LOCK;
+                }
+                else
+                {
+                    NewRequest.Opcode = cMTDOpcodes.OPC_UNLOCK;
+                }
+
+                NewRequest.Length = (byte)len;
+                RequestStatus = eRequestStatus.eNEW_REQUEST;
+
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                {
+                    Thread.Sleep(10);
+                }
+
+                if(RequestStatus == eRequestStatus.eSUCCESS)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool Save()
+        {
+            if(bActive)
+            {
+                setLocked(false);
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+                NewRequest = new cTexNET.cMessage();
+                NewRequest.Msg = new byte[1];
+                NewRequest.Msg[0] = cMTDOpcodes.OPC_SAVE;
+                NewRequest.Opcode = cMTDOpcodes.OPC_SAVE;
+                NewRequest.Length = (byte)NewRequest.Msg.Length;
+                RequestStatus = eRequestStatus.eNEW_REQUEST;
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+                setLocked(true);
+                while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
+                { Thread.Sleep(10); }
+
+                if(RequestStatus == eRequestStatus.eSUCCESS)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 

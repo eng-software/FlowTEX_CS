@@ -46,6 +46,9 @@
             this.lblSerialNumber = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.edtI2CAddress = new System.Windows.Forms.TextBox();
+            this.btnChangeI2CAddress = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.icoFlowTEX)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,9 +102,9 @@
             // 
             this.lblTemperature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTemperature.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperature.Location = new System.Drawing.Point(34, 118);
+            this.lblTemperature.Location = new System.Drawing.Point(28, 121);
             this.lblTemperature.Name = "lblTemperature";
-            this.lblTemperature.Size = new System.Drawing.Size(232, 32);
+            this.lblTemperature.Size = new System.Drawing.Size(238, 32);
             this.lblTemperature.TabIndex = 40;
             this.lblTemperature.Text = "lblTemperature";
             this.lblTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -127,7 +130,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 52);
+            this.label2.Location = new System.Drawing.Point(12, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 42;
@@ -147,7 +150,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 160);
+            this.label4.Location = new System.Drawing.Point(12, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 16);
             this.label4.TabIndex = 44;
@@ -157,7 +160,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 220);
+            this.label5.Location = new System.Drawing.Point(12, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 16);
             this.label5.TabIndex = 45;
@@ -167,9 +170,9 @@
             // 
             this.lblModel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblModel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModel.Location = new System.Drawing.Point(34, 178);
+            this.lblModel.Location = new System.Drawing.Point(28, 177);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(232, 32);
+            this.lblModel.Size = new System.Drawing.Size(238, 32);
             this.lblModel.TabIndex = 46;
             this.lblModel.Text = "lblModel";
             this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -178,9 +181,9 @@
             // 
             this.lblSerialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSerialNumber.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSerialNumber.Location = new System.Drawing.Point(30, 236);
+            this.lblSerialNumber.Location = new System.Drawing.Point(28, 232);
             this.lblSerialNumber.Name = "lblSerialNumber";
-            this.lblSerialNumber.Size = new System.Drawing.Size(232, 32);
+            this.lblSerialNumber.Size = new System.Drawing.Size(238, 32);
             this.lblSerialNumber.TabIndex = 47;
             this.lblSerialNumber.Text = "lblSerialNumber";
             this.lblSerialNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -189,9 +192,9 @@
             // 
             this.lblVersion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblVersion.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(30, 289);
+            this.lblVersion.Location = new System.Drawing.Point(28, 288);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(232, 32);
+            this.lblVersion.Size = new System.Drawing.Size(238, 32);
             this.lblVersion.TabIndex = 49;
             this.lblVersion.Text = "lblVersion";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -200,16 +203,50 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 273);
+            this.label7.Location = new System.Drawing.Point(12, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 16);
             this.label7.TabIndex = 48;
             this.label7.Text = "Versão:";
             // 
+            // edtI2CAddress
+            // 
+            this.edtI2CAddress.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.edtI2CAddress.Location = new System.Drawing.Point(28, 343);
+            this.edtI2CAddress.Name = "edtI2CAddress";
+            this.edtI2CAddress.Size = new System.Drawing.Size(147, 29);
+            this.edtI2CAddress.TabIndex = 50;
+            this.edtI2CAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edtI2CAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.edtI2CAddress_KeyDown);
+            // 
+            // btnChangeI2CAddress
+            // 
+            this.btnChangeI2CAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeI2CAddress.Location = new System.Drawing.Point(187, 343);
+            this.btnChangeI2CAddress.Name = "btnChangeI2CAddress";
+            this.btnChangeI2CAddress.Size = new System.Drawing.Size(75, 29);
+            this.btnChangeI2CAddress.TabIndex = 51;
+            this.btnChangeI2CAddress.Text = "Alterar";
+            this.btnChangeI2CAddress.UseVisualStyleBackColor = true;
+            this.btnChangeI2CAddress.Click += new System.EventHandler(this.btnChangeI2CAddress_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 324);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.TabIndex = 52;
+            this.label6.Text = "Endereço I2C:";
+            // 
             // frmFlowTex
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(280, 339);
+            this.ClientSize = new System.Drawing.Size(280, 379);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnChangeI2CAddress);
+            this.Controls.Add(this.edtI2CAddress);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblSerialNumber);
@@ -255,6 +292,9 @@
         private System.Windows.Forms.Label lblSerialNumber;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox edtI2CAddress;
+        private System.Windows.Forms.Button btnChangeI2CAddress;
+        private System.Windows.Forms.Label label6;
     }
 }
 

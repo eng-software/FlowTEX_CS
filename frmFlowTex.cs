@@ -38,6 +38,13 @@ namespace FlowTEX
 
         bool wasConnected = false;
 
+        Binding I2CaddressBinding;
+        public byte I2CAddress
+        {
+            get;
+            set;           
+        }
+
         public frmFlowTex()
         {
             InitializeComponent();
@@ -52,6 +59,55 @@ namespace FlowTEX
             lblSerialNumber.Text = "";
             lblVersion.Text = "";
             lblModel.Text = "";
+
+            I2CaddressBinding = edtI2CAddress.DataBindings.Add("Text",this,"I2CAddress");
+            I2CaddressBinding.Format += I2CaddressBinding_Format;
+            I2CaddressBinding.Parse += I2CaddressBinding_Parse;            
+        }
+
+        private void I2CaddressBinding_Parse(object sender, ConvertEventArgs e)
+        {
+            string s = (string)e.Value;
+            byte result = 0;
+            bool bSuccess = false;
+
+            if((s != null) &&
+                ((s.StartsWith("0x")) || (s.StartsWith("0X"))) &&
+                byte.TryParse(s.Substring(2), System.Globalization.NumberStyles.AllowHexSpecifier, null, out result))
+            {
+                if((result > 0) && (result <= 0x7F))
+                {
+                    e.Value = result;
+                    bSuccess = true;
+                }
+                else
+                {
+                    e.Value = I2CAddress;
+                }
+            }
+            else if(byte.TryParse(s, out result))
+            {
+                if((result > 0) && (result <= 0x7F))
+                {
+                    e.Value = result;
+                    bSuccess = true;
+                }
+                else
+                {
+                    e.Value = I2CAddress;
+                }
+            }
+
+            if(!bSuccess)
+            { MessageBox.Show("Valor inválido!\n Valores permitidos 0x01 a 0x7F", "Valor Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void I2CaddressBinding_Format(object sender, ConvertEventArgs e)
+        {
+            if(e.DesiredType == typeof(string))
+            {
+                e.Value = "0x" + (string)((byte)e.Value).ToString("X2");
+            }
         }
 
         private void ComboSerialFlowTex_DropDown(object sender, EventArgs e)
@@ -109,7 +165,11 @@ namespace FlowTEX
                         lblVersion.Text = version;
                     }
 
-
+                    if(FlowTEX.getI2CAddress(out byte Address  ))
+                    {                        
+                        I2CAddress = Address;
+                        I2CaddressBinding.ReadValue();
+                    }
                 }
 
                 lblFlow.Text = FlowTEX.getFlow().ToString(defaultFlowFormat) + defaultFlowUnit;
@@ -170,6 +230,27 @@ namespace FlowTEX
             else
             {
                 btnAbrirFlowTEX.Text = "Fechar";
+            }
+        }
+
+        private void edtI2CAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Return)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                Validate();
+            }
+        }
+
+        private void btnChangeI2CAddress_Click(object sender, EventArgs e)
+        {
+            if(  MessageBox.Show("Deseja alterar o endereço de I2C?", "Alteração de endereço de I2C", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes )
+            {
+                if(FlowTEX.setI2CAddress(I2CAddress))
+                { MessageBox.Show("Endereço alterado com sucesso!", "Alteração de endereço de I2C", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else
+                { MessageBox.Show("Falha na  alteração do endereço", "Alteração de endereço de I2C", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
     }
