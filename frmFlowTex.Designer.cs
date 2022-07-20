@@ -84,7 +84,7 @@
             this.comboSerialFlowTex.FormattingEnabled = true;
             this.comboSerialFlowTex.Location = new System.Drawing.Point(67, 11);
             this.comboSerialFlowTex.Name = "comboSerialFlowTex";
-            this.comboSerialFlowTex.Size = new System.Drawing.Size(95, 24);
+            this.comboSerialFlowTex.Size = new System.Drawing.Size(95, 28);
             this.comboSerialFlowTex.TabIndex = 37;
             // 
             // btnAbrirFlowTEX
@@ -122,7 +122,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 41;
             this.label1.Text = "Serial :";
             // 
@@ -132,7 +132,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 42;
             this.label2.Text = "Vazão:";
             // 
@@ -142,7 +142,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 16);
+            this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 43;
             this.label3.Text = "Temperatura:";
             // 
@@ -152,7 +152,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 157);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 16);
+            this.label4.Size = new System.Drawing.Size(68, 20);
             this.label4.TabIndex = 44;
             this.label4.Text = "Modelo:";
             // 
@@ -162,7 +162,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 212);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 16);
+            this.label5.Size = new System.Drawing.Size(138, 20);
             this.label5.TabIndex = 45;
             this.label5.Text = "Número de série:";
             // 
@@ -205,7 +205,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(12, 268);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 16);
+            this.label7.Size = new System.Drawing.Size(67, 20);
             this.label7.TabIndex = 48;
             this.label7.Text = "Versão:";
             // 
@@ -214,7 +214,7 @@
             this.edtI2CAddress.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edtI2CAddress.Location = new System.Drawing.Point(28, 343);
             this.edtI2CAddress.Name = "edtI2CAddress";
-            this.edtI2CAddress.Size = new System.Drawing.Size(147, 29);
+            this.edtI2CAddress.Size = new System.Drawing.Size(147, 34);
             this.edtI2CAddress.TabIndex = 50;
             this.edtI2CAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.edtI2CAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.edtI2CAddress_KeyDown);
@@ -236,7 +236,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(6, 324);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 52;
             this.label6.Text = "Endereço I2C:";
             // 
@@ -267,7 +267,7 @@
             this.MinimizeBox = false;
             this.Name = "frmFlowTex";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TEX - Sensor FlowTEX";
+            this.Text = "TEX - Sensor FlowTEX - 1.0.0.1";
             ((System.ComponentModel.ISupportInitialize)(this.icoFlowTEX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

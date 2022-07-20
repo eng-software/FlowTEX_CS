@@ -651,10 +651,11 @@ namespace TEX
                 while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
                 { Thread.Sleep(10); }
 
+                Save();
+
                 setLocked(true);
                 while((RequestStatus == eRequestStatus.eNEW_REQUEST) || (RequestStatus == eRequestStatus.eWAITTING))
                 { Thread.Sleep(10); }
-
 
                 if(RequestStatus == eRequestStatus.eSUCCESS)
                 { return true; }
