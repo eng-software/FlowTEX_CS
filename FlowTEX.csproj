@@ -6,12 +6,27 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F0804007-5F1E-47AE-A9A8-3A77FD4A1255}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FlowTEX</RootNamespace>
-    <AssemblyName>FlowTEX</AssemblyName>
+    <RootNamespace>FlowTEXMonitor</RootNamespace>
+    <AssemblyName>FlowTEXMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TEX.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cFixedNumber.cs" />
     <Compile Include="cFlowTEX.cs" />
+    <Compile Include="cFlowUnit.cs" />
+    <Compile Include="cPressureUnit.cs" />
     <Compile Include="cTexNET.cs" />
     <Compile Include="frmFlowTex.cs">
       <SubType>Form</SubType>
@@ -54,8 +75,20 @@
     <Compile Include="frmFlowTex.Designer.cs">
       <DependentUpon>frmFlowTex.cs</DependentUpon>
     </Compile>
+    <Compile Include="IUnitConvertion.cs" />
+    <Compile Include="IUnitResolution.cs" />
+    <Compile Include="MeasurableValue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmFlowTex.en.resx">
+      <DependentUpon>frmFlowTex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFlowTex.ja-JP.resx">
+      <DependentUpon>frmFlowTex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFlowTex.pt-BR.resx">
+      <DependentUpon>frmFlowTex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFlowTex.resx">
       <DependentUpon>frmFlowTex.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,7 +100,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Textos.ja-JP.resx" />
+    <EmbeddedResource Include="Textos.pt-BR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Textos.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,9 +119,25 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="README.md" />
+    <EmbeddedResource Include="Textos.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\brflag.png" />
+    <None Include="images\jpflag.png" />
+    <None Include="images\usaflag.png" />
+    <Content Include="TEX.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

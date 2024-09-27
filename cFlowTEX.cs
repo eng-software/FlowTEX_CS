@@ -39,6 +39,7 @@ namespace TEX
         bool AutoDetectPort = true;
 
         public float flow;
+        public float zero;
         public float temperature;
         bool bActive;
 
@@ -97,6 +98,7 @@ namespace TEX
             SerialMode = eSerialMode.eCLOSED;
             flow = 0;
             temperature = 0;
+            zero = 0;
         }
 
         ~cFlowTEX()
@@ -402,6 +404,7 @@ namespace TEX
                                 if((opcode == cMTDOpcodes.OPC_READ_FLOW) &&(length>=8))
                                 {
                                     flow = BitConverter.ToSingle(msg, 0);
+                                    flow -= zero;
                                     temperature = BitConverter.ToSingle(msg,4);
                                     bError = false;
                                 }
@@ -784,6 +787,18 @@ namespace TEX
 
             return false;
         }
+
+        public void setZero()
+        {
+            zero += flow;
+        }
+
+        public void clearZero()
+        {
+            zero = 0;
+        }
+
+
     }
 
 }

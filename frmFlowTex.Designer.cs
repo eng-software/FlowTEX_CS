@@ -30,9 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFlowTex));
-            this.lblFlow = new System.Windows.Forms.Label();
             this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
-            this.icoFlowTEX = new System.Windows.Forms.PictureBox();
             this.comboSerialFlowTex = new System.Windows.Forms.ComboBox();
             this.btnAbrirFlowTEX = new System.Windows.Forms.Button();
             this.lblTemperature = new System.Windows.Forms.Label();
@@ -46,68 +44,52 @@
             this.lblSerialNumber = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.edtI2CAddress = new System.Windows.Forms.TextBox();
-            this.btnChangeI2CAddress = new System.Windows.Forms.Button();
+            this.lblFlow = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboFlowUnit = new System.Windows.Forms.ComboBox();
+            this.btnZero = new System.Windows.Forms.Button();
+            this.lblUnit = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timerZero = new System.Windows.Forms.Timer(this.components);
+            this.btnClrZero = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblStandarization = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnChangeI2CAddress = new System.Windows.Forms.Button();
+            this.edtI2CAddress = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.icoFlowTEX = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icoFlowTEX)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblFlow
-            // 
-            this.lblFlow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblFlow.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFlow.Location = new System.Drawing.Point(28, 68);
-            this.lblFlow.Name = "lblFlow";
-            this.lblFlow.Size = new System.Drawing.Size(238, 30);
-            this.lblFlow.TabIndex = 0;
-            this.lblFlow.Text = "lblFlow";
-            this.lblFlow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tmrRefresh
             // 
             this.tmrRefresh.Enabled = true;
             this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
             // 
-            // icoFlowTEX
-            // 
-            this.icoFlowTEX.Location = new System.Drawing.Point(249, 13);
-            this.icoFlowTEX.Name = "icoFlowTEX";
-            this.icoFlowTEX.Size = new System.Drawing.Size(20, 20);
-            this.icoFlowTEX.TabIndex = 39;
-            this.icoFlowTEX.TabStop = false;
-            // 
             // comboSerialFlowTex
             // 
             this.comboSerialFlowTex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboSerialFlowTex.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboSerialFlowTex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.comboSerialFlowTex, "comboSerialFlowTex");
             this.comboSerialFlowTex.FormattingEnabled = true;
-            this.comboSerialFlowTex.Location = new System.Drawing.Point(67, 11);
             this.comboSerialFlowTex.Name = "comboSerialFlowTex";
-            this.comboSerialFlowTex.Size = new System.Drawing.Size(95, 28);
-            this.comboSerialFlowTex.TabIndex = 37;
             // 
             // btnAbrirFlowTEX
             // 
-            this.btnAbrirFlowTEX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbrirFlowTEX.Location = new System.Drawing.Point(168, 12);
+            resources.ApplyResources(this.btnAbrirFlowTEX, "btnAbrirFlowTEX");
             this.btnAbrirFlowTEX.Name = "btnAbrirFlowTEX";
-            this.btnAbrirFlowTEX.Size = new System.Drawing.Size(75, 23);
-            this.btnAbrirFlowTEX.TabIndex = 38;
-            this.btnAbrirFlowTEX.Text = "Abrir";
             this.btnAbrirFlowTEX.UseVisualStyleBackColor = true;
             this.btnAbrirFlowTEX.Click += new System.EventHandler(this.btnAbrirFlowTEX_Click);
             // 
             // lblTemperature
             // 
             this.lblTemperature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTemperature.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperature.Location = new System.Drawing.Point(28, 121);
+            resources.ApplyResources(this.lblTemperature, "lblTemperature");
             this.lblTemperature.Name = "lblTemperature";
-            this.lblTemperature.Size = new System.Drawing.Size(238, 32);
-            this.lblTemperature.TabIndex = 40;
-            this.lblTemperature.Text = "lblTemperature";
-            this.lblTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // imgStatus
             // 
@@ -118,135 +100,191 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 14);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Serial :";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 49);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Vazão:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 102);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 20);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Temperatura:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 157);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 20);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "Modelo:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 212);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 20);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "Número de série:";
             // 
             // lblModel
             // 
             this.lblModel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblModel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModel.Location = new System.Drawing.Point(28, 177);
+            resources.ApplyResources(this.lblModel, "lblModel");
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(238, 32);
-            this.lblModel.TabIndex = 46;
-            this.lblModel.Text = "lblModel";
-            this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblSerialNumber
             // 
             this.lblSerialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblSerialNumber.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSerialNumber.Location = new System.Drawing.Point(28, 232);
+            resources.ApplyResources(this.lblSerialNumber, "lblSerialNumber");
             this.lblSerialNumber.Name = "lblSerialNumber";
-            this.lblSerialNumber.Size = new System.Drawing.Size(238, 32);
-            this.lblSerialNumber.TabIndex = 47;
-            this.lblSerialNumber.Text = "lblSerialNumber";
-            this.lblSerialNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblVersion
             // 
             this.lblVersion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblVersion.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(28, 288);
+            resources.ApplyResources(this.lblVersion, "lblVersion");
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(238, 32);
-            this.lblVersion.TabIndex = 49;
-            this.lblVersion.Text = "lblVersion";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 268);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 20);
-            this.label7.TabIndex = 48;
-            this.label7.Text = "Versão:";
             // 
-            // edtI2CAddress
+            // lblFlow
             // 
-            this.edtI2CAddress.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.edtI2CAddress.Location = new System.Drawing.Point(28, 343);
-            this.edtI2CAddress.Name = "edtI2CAddress";
-            this.edtI2CAddress.Size = new System.Drawing.Size(147, 34);
-            this.edtI2CAddress.TabIndex = 50;
-            this.edtI2CAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.edtI2CAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.edtI2CAddress_KeyDown);
-            // 
-            // btnChangeI2CAddress
-            // 
-            this.btnChangeI2CAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeI2CAddress.Location = new System.Drawing.Point(187, 343);
-            this.btnChangeI2CAddress.Name = "btnChangeI2CAddress";
-            this.btnChangeI2CAddress.Size = new System.Drawing.Size(75, 29);
-            this.btnChangeI2CAddress.TabIndex = 51;
-            this.btnChangeI2CAddress.Text = "Alterar";
-            this.btnChangeI2CAddress.UseVisualStyleBackColor = true;
-            this.btnChangeI2CAddress.Click += new System.EventHandler(this.btnChangeI2CAddress_Click);
+            this.lblFlow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.lblFlow, "lblFlow");
+            this.lblFlow.Name = "lblFlow";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 324);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 20);
-            this.label6.TabIndex = 52;
-            this.label6.Text = "Endereço I2C:";
+            // 
+            // comboFlowUnit
+            // 
+            this.comboFlowUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboFlowUnit, "comboFlowUnit");
+            this.comboFlowUnit.FormattingEnabled = true;
+            this.comboFlowUnit.Name = "comboFlowUnit";
+            this.comboFlowUnit.SelectedIndexChanged += new System.EventHandler(this.comboFlowUnit_SelectedIndexChanged);
+            // 
+            // btnZero
+            // 
+            resources.ApplyResources(this.btnZero, "btnZero");
+            this.btnZero.Name = "btnZero";
+            this.btnZero.UseVisualStyleBackColor = true;
+            this.btnZero.Click += new System.EventHandler(this.btnZero_Click);
+            this.btnZero.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnZero_MouseDown);
+            this.btnZero.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnZero_MouseUp);
+            // 
+            // lblUnit
+            // 
+            this.lblUnit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.lblUnit, "lblUnit");
+            this.lblUnit.Name = "lblUnit";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblFlow);
+            this.panel1.Controls.Add(this.lblUnit);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // progressBar1
+            // 
+            resources.ApplyResources(this.progressBar1, "progressBar1");
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.Value = 50;
+            // 
+            // timerZero
+            // 
+            this.timerZero.Tick += new System.EventHandler(this.timerZero_Tick);
+            // 
+            // btnClrZero
+            // 
+            resources.ApplyResources(this.btnClrZero, "btnClrZero");
+            this.btnClrZero.Name = "btnClrZero";
+            this.btnClrZero.UseVisualStyleBackColor = true;
+            this.btnClrZero.Click += new System.EventHandler(this.btnClrZero_Click);
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // lblStandarization
+            // 
+            resources.ApplyResources(this.lblStandarization, "lblStandarization");
+            this.lblStandarization.Name = "lblStandarization";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // btnChangeI2CAddress
+            // 
+            resources.ApplyResources(this.btnChangeI2CAddress, "btnChangeI2CAddress");
+            this.btnChangeI2CAddress.Name = "btnChangeI2CAddress";
+            this.btnChangeI2CAddress.UseVisualStyleBackColor = true;
+            this.btnChangeI2CAddress.Click += new System.EventHandler(this.btnChangeI2CAddress_Click);
+            // 
+            // edtI2CAddress
+            // 
+            resources.ApplyResources(this.edtI2CAddress, "edtI2CAddress");
+            this.edtI2CAddress.Name = "edtI2CAddress";
+            this.edtI2CAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.edtI2CAddress_KeyDown);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button3.BackgroundImage = global::FlowTEXMonitor.Properties.Resources.usaflag;
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button2.BackgroundImage = global::FlowTEXMonitor.Properties.Resources.jpflag;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button1.BackgroundImage = global::FlowTEXMonitor.Properties.Resources.brflag;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // icoFlowTEX
+            // 
+            resources.ApplyResources(this.icoFlowTEX, "icoFlowTEX");
+            this.icoFlowTEX.Name = "icoFlowTEX";
+            this.icoFlowTEX.TabStop = false;
             // 
             // frmFlowTex
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(280, 379);
-            this.Controls.Add(this.label6);
+            resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnChangeI2CAddress);
             this.Controls.Add(this.edtI2CAddress);
+            this.Controls.Add(this.lblStandarization);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnClrZero);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnZero);
+            this.Controls.Add(this.comboFlowUnit);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblSerialNumber);
@@ -260,14 +298,12 @@
             this.Controls.Add(this.icoFlowTEX);
             this.Controls.Add(this.comboSerialFlowTex);
             this.Controls.Add(this.btnAbrirFlowTEX);
-            this.Controls.Add(this.lblFlow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFlowTex";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TEX - Sensor FlowTEX - 1.0.0.1";
+            this.Load += new System.EventHandler(this.frmFlowTex_Load);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icoFlowTEX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -275,8 +311,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblFlow;
         private System.Windows.Forms.PictureBox icoFlowTEX;
         private System.Windows.Forms.ComboBox comboSerialFlowTex;
         private System.Windows.Forms.Button btnAbrirFlowTEX;
@@ -292,9 +326,23 @@
         private System.Windows.Forms.Label lblSerialNumber;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox edtI2CAddress;
-        private System.Windows.Forms.Button btnChangeI2CAddress;
+        private System.Windows.Forms.Label lblFlow;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboFlowUnit;
+        private System.Windows.Forms.Button btnZero;
+        private System.Windows.Forms.Label lblUnit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Timer timerZero;
+        private System.Windows.Forms.Button btnClrZero;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblStandarization;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnChangeI2CAddress;
+        private System.Windows.Forms.TextBox edtI2CAddress;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
